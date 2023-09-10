@@ -7,3 +7,17 @@ services:
     volumes:
       - ./src:/usr/share/nginx/html
     network_mode: host
+  s1:
+    image: nginx:latest
+    container_name: s1
+    volumes:
+      - ./example/s1:/usr/share/nginx/html
+    ports:
+      - 0.0.0.0:3001:80
+  s2:
+    image: nginx:latest
+    container_name: s2
+    volumes:
+      - ./example/s2:/usr/share/nginx/html
+    ports:
+      - 0.0.0.0:3002:80
