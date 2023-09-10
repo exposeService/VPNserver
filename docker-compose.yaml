@@ -1,0 +1,9 @@
+version: '3'
+
+services:
+  nginxproxy:
+    build: .
+    container_name: nginxproxy
+    volumes:
+      - ./src:/usr/share/nginx/html
+    network_mode: host
