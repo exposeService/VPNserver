@@ -1,12 +1,14 @@
 version: '3'
 
 services:
-  nginxproxy:
+  proxymanager:
     build: .
-    container_name: nginxproxy
     volumes:
-      - ./src:/usr/share/nginx/html
-    network_mode: host
+      - ./app:/app
+    container_name: proxymanager
+    ports:
+      - 0.0.0.0:3000:8080
+      
   s1:
     image: nginx:latest
     container_name: s1
@@ -14,6 +16,7 @@ services:
       - ./example/s1:/usr/share/nginx/html
     ports:
       - 0.0.0.0:3001:80
+
   s2:
     image: nginx:latest
     container_name: s2
